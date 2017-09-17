@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/zenreach/bcrypt.svg?branch=master)](https://travis-ci.org/zenreach/bcrypt) [![Go Report Card](https://goreportcard.com/badge/github.com/zenreach/bcrypt)](https://goreportcard.com/report/github.com/zenreach/bcrypt)
+
 BCrypt Password Encryptor
 =========================
 This package contains a tool to encrypt passwords using the bcrypt password
@@ -5,7 +7,9 @@ algorithm.
 
 Install
 -------
-You can install the tool using `go get`:
+You may download a binary for your plaform from the [releases page][1].
+
+Alternatively you can install the latest master commit with `go get`:
 
     $ go get github.com/zenreach/bcrypt
 
@@ -61,3 +65,6 @@ Within a script you may wish to capture the password to a variable:
     #!/bin/bash
     HASH=$(bcrypt)
     echo 'user:$HASH' >> /etc/myapp/users.pw
+
+
+[1]: https://github.com/zenreach/bcrypt/releases "Releases"

@@ -1,0 +1,22 @@
+language: go
+go:
+- 1.9
+before_install:
+- go get github.com/mitchellh/gox
+install:
+- true
+script:
+- go test -v ./...
+after_success:
+- gox -output "build/{{.OS}}_{{.Arch}}/{{.Dir}}"
+- mkdir -p dist
+- ls --color=never build | xargs -I{} bash -c 'test -n "$TRAVIS_TAG" || exit 0; cd build/{} && tar -czf ../../dist/bcrypt_${TRAVIS_TAG}_{}.tar.gz *'
+deploy:
+  provider: releases
+  api_key: "$GITHUB_TOKEN"
+  skip_cleanup: true
+  file_glob: true
+  file: dist/*
+  on:
+    tags: true
+    repo: zenreach/bcrypt
