@@ -13,7 +13,8 @@ after_success:
 - ls --color=never build | xargs -I{} bash -c 'test -n "$TRAVIS_TAG" || exit 0; cd build/{} && tar -czf ../../dist/bcrypt_${TRAVIS_TAG}_{}.tar.gz *'
 deploy:
   provider: releases
-  api_key: "$GITHUB_TOKEN"
+  api_key:
+    secure: AcKf0RapOiGiQKYBYOxFcmWLcJtUP/JB4jOKEd6DStkeLqoWDZl0/O5duaCKWImvuYwcPXw9kQzgoJFHUlA5aIv7rVrjq+AeF281e2vGHumD3XYOkBQ4sAkqFUidnGaHRuGLzLRFScU7VmYDjHrURXU1oZ3lsQoAFwmYRu/sxwV0fmwy+tMGT/yqX+9Cl+tf0OQ94nayLr5rE4B+trzV3XkeEyW3+sGtQAQ9KnM6sdevS+3fXe8K2HY/QkhFCL3AaSAh3mmqV2qiRTjcXBJS4KZuLeEzTp0bgw1OpTAmogxEfYt3+DOApsiC4DTo9XHzGibCvIPGluDrFffjVBY1sKmaXcsSF3265+WUSIhp2u5aiYquvLmPzr2KwJZ4XOZzuXtF1kAHHRJ0r6T1mwDKt+kK6BT55I1hlm6IfdKPm3QQWXG47c6xoZak8YZNKg+cW2MWh/SHj8dQSihdyOKS+VWMR5F8t3SXS+D4m20c5KI5VHjm0f4bDiaYks5RJmxILGWV7qBaBdX7Xm57EqXjALK4zr0mYNMDWf3262eN5y2Hg9YcOPOvVQPZsBAJijMBzViFHmm36a10AXVaBm6eOHAbXVbMmSRfov6ipfriklj4Hd/SvrFzwQ5lnSOWYsY8TwMeeKCvUH4afQloEQpI2SjbjKf5M386Hybsyujf36A=
   skip_cleanup: true
   file_glob: true
   file: dist/*
