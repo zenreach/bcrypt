@@ -1,4 +1,4 @@
 *.sw?
-bcrypt
-build
-dist
+./bcrypt
+./build
+./dist
